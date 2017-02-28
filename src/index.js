@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
-import { firebaseApp } from './firebase';
+import { default as firebaseApp } from './firebase';
 
 import App from './components/App';
 import SignIn from './components/SignIn';
