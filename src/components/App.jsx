@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import firebaseApp from '../firebase';
 
 
@@ -33,5 +34,9 @@ class App extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    console.log({state});
+    return {}
+}
 
-export default App;
+export default connect(mapStateToProps, null)(App);
