@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
-import firebaseApp from './firebase';
+import { firebaseApp } from './firebase';
 import reducer from './reducers';
 import { default as logUser } from './actions';
 

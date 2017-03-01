@@ -8,9 +8,7 @@ const reducer = (state = user, action) => {
     const { email } = action;
     switch (action.type) {
         case SIGNED_IN:
-            user = {
-                email
-            };
+            user = { email };
             return user;
         default:
             return state;
