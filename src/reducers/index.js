@@ -1,15 +1,13 @@
 import { SIGNED_IN } from '../constants';
 
-let user = {
+const initialState = {
     email: null
 };
 
-const reducer = (state = user, action) => {
-    const { email } = action;
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGNED_IN:
-            user = { email };
-            return user;
+            return state;
         default:
             return state;
     }

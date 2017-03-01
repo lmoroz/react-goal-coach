@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AddGoal from './AddGoal';
 import { firebaseApp } from '../firebase';
+import AddGoal from './AddGoal';
 
 
 class App extends Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: '',
-            error: {
-                message: ''
-            }
-        };
-    }
 
     signOut() {
         firebaseApp.auth().signOut();
@@ -38,8 +28,10 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log({state});
-    return {};
+    const { email } = state;
+    return {
+        email
+    };
 }
 
 export default connect(mapStateToProps, null)(App);

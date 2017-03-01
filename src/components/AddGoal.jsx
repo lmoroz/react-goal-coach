@@ -4,21 +4,23 @@ import { goalRef } from '../firebase';
 
 
 class AddGoal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: ''
-        };
+
+    componentWillMount() {
+        console.log('AddGoal componentWillMount this.props = ', this.props);
+    }
+
+    componentDidMount() {
+        console.log('AddGoal componentDidMount this.props = ', this.props);
     }
 
     addGoal() {
-        this.setState({title: this.newGoalText.value});
         const { email } = this.props;
-        console.log('this.state = ', this.state, email);
+        console.log('this.props = ', this.props, email);
         goalRef.push({email, title: this.newGoalText.value});
     }
 
     render () {
+        console.log('AddGoal render this.props = ', this.props);
         return (
             <div className="form-inline">
                 <div className="form-group">
@@ -26,7 +28,7 @@ class AddGoal extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Add a goal"
-                        style={{margin: '5px'}}
+                        style={{marginRight: '5px'}}
                         ref={r => { this.newGoalText = r; }}
                     />
                     <button
@@ -41,10 +43,6 @@ class AddGoal extends Component {
     }
 }
 
-AddGoal.propTypes = {
-    email: React.PropTypes.string.isRequired,
-};
-
 function mapStateToProps(state) {
     const { email } = state;
     return {
@@ -52,3 +50,7 @@ function mapStateToProps(state) {
     };
 }
 export default connect(mapStateToProps, null)(AddGoal);
+
+AddGoal.propTypes = {
+    email: React.PropTypes.string,
+};
