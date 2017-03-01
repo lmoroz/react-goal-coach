@@ -14,9 +14,10 @@ class AddGoal extends Component {
     }
 
     addGoal() {
-        const { email } = this.props;
-        console.log('this.props = ', this.props, email);
-        goalRef.push({email, title: this.newGoalText.value});
+        const { email, uid } = this.props;
+        // console.log('AddGoal goalRef = ', goalRef);
+        console.log('AddGoal this.props = ', this.props);
+        goalRef.push({uid, email, title: this.newGoalText.value});
     }
 
     render () {
@@ -43,14 +44,15 @@ class AddGoal extends Component {
     }
 }
 
+AddGoal.propTypes = {
+    uid: React.PropTypes.string,
+    email: React.PropTypes.string,
+};
 function mapStateToProps(state) {
-    const { email } = state;
+    const { email, uid } = state;
     return {
-        email
+        email,
+        uid
     };
 }
 export default connect(mapStateToProps, null)(AddGoal);
-
-AddGoal.propTypes = {
-    email: React.PropTypes.string,
-};

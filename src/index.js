@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { firebaseApp } from './firebase';
 import reducer from './reducers';
-import { default as logUser } from './actions';
+import {logUser, setGoals} from './actions';
 
 import App from './components/App';
 import SignIn from './components/SignIn';
@@ -15,9 +15,9 @@ const store = createStore(reducer);
 
 firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
-        console.log('user has signed as', user);
-        const { email } = user;
-        store.dispatch(logUser(email));
+        const { email, uid } = user;
+        console.log('user has signed as:', {email, uid});
+        store.dispatch(logUser(email, uid));
         browserHistory.push('/app');
     }
     else {
