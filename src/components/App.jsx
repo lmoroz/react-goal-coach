@@ -13,7 +13,10 @@ class App extends Component {
 
     render () {
         return (
-            <div>
+            <div
+                className="App"
+                style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', minHeight: '100vh', width: '50vw', margin: '0 auto'}}
+            >
                 <h3>Goals</h3>
                 <AddGoal />
                 <GoalList />

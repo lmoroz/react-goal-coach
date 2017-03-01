@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { firebaseApp } from './firebase';
 import reducer from './reducers';
-import {logUser, setGoals} from './actions';
+import { logUser } from './actions';
 
 import App from './components/App';
 import SignIn from './components/SignIn';

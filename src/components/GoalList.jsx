@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { goalRef } from '../firebase';
+import { setGoals, checkGoal } from '../actions';
 
 class GoalList extends Component {
 
@@ -17,36 +18,48 @@ class GoalList extends Component {
                 goals.push({uid, email, title});
             });
             console.log('GoalList goals = ', goals);
+            this.props.setGoals(goals);
         });
     }
 
-    addGoal() {
-        const { email, uid } = this.props;
-        console.log('this.props = ', this.props);
-        goalRef.push({uid, email, title: this.newGoalText.value});
-    }
 
     render () {
         console.log('GoalList render this.props = ', this.props);
+        const { goals } = this.props;
         return (
-            <div className="list-inline">
-                GoalList
-            </div>
-
-        );
+            <ul className="list-group">
+                {
+                    goals.map((goal, id) => (
+                        <li key={id} className="list-group-item clearfix">
+                            <span className="list-item">{goal.title}</span>
+                            <button
+                                className="list-item btn btn-success btn-xs pull-right"
+                                style={{marginLeft: '10px'}}
+                                onClick={() => checkGoal(id)}
+                            > ✔ </button>
+                            <div className="list-item time">
+                                {
+                                    // moment(new Date(reminder.dueDate))
+                                    // .locale('ru')
+                                    // .fromNow()
+                                }
+                            </div>
+                        </li>))
+                }
+            </ul>);
     }
 }
 
 GoalList.propTypes = {
-    uid: React.PropTypes.string,
-    email: React.PropTypes.string,
+    goals: React.PropTypes.array.isRequires,
+    setGoals: React.PropTypes.func.isRequired,
+    checkGoal: React.PropTypes.func.isRequired,
 };
 function mapStateToProps(state) {
-    const { email, uid } = state;
+    const { goals } = state;
     return {
-        email,
-        uid
+        goals
     };
 }
 
-export default connect(mapStateToProps, null)(GoalList);
+export default connect(mapStateToProps, { setGoals, checkGoal })(GoalList);

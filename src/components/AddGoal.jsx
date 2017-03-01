@@ -49,7 +49,7 @@ AddGoal.propTypes = {
     email: React.PropTypes.string,
 };
 function mapStateToProps(state) {
-    const { email, uid } = state;
+    const { email, uid } = state.user;
     return {
         email,
         uid
