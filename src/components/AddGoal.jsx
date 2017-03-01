@@ -4,15 +4,6 @@ import { goalRef } from '../firebase';
 
 
 class AddGoal extends Component {
-
-    componentWillMount() {
-        console.log('AddGoal componentWillMount this.props = ', this.props);
-    }
-
-    componentDidMount() {
-        console.log('AddGoal componentDidMount this.props = ', this.props);
-    }
-
     addGoal() {
         const { email, uid } = this.props;
         // console.log('AddGoal goalRef = ', goalRef);
@@ -33,7 +24,7 @@ class AddGoal extends Component {
                         ref={r => { this.newGoalText = r; }}
                     />
                     <button
-                        className="btn btn-success"
+                        className="btn btn-primary"
                         type="button"
                         onClick={() => this.addGoal()}
                     >Submit</button>

@@ -15,14 +15,28 @@ class App extends Component {
         return (
             <div
                 className="App"
-                style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', minHeight: '100vh', width: '50vw', margin: '0 auto'}}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    minHeight: '100vh',
+                    width: '50vw',
+                    margin: '0 auto',
+                    position: 'relative'
+                }}
             >
-                <h3>Goals</h3>
+                <h3>Goal Coach</h3>
                 <AddGoal />
+                <h4>Goals</h4>
                 <GoalList />
+                <hr />
+                <h4>Complete Goals</h4>
+                <hr />
                 <button
                     className="btn btn-danger"
                     onClick={() => this.signOut()}
+                    style={{position: 'fixed', top: '5px', right: '5px'}}
                 >
                     Sign out
                 </button>
