@@ -17,22 +17,37 @@ class CompletetedGoalList extends Component {
         });
     }
 
+    clearCompleted() {
+        completedGoalRef.set([]);
+    }
 
     render () {
         const { completedGoals } = this.props;
-        return (
-            <ul className="list-group">
-                {
-                    completedGoals.map((goal, id) =>
-                        <li key={id} className="list-group-item clearfix">
-                            <span className="list-item">{goal.title}</span>
-                            <div className="list-item text-muted small">
-                                completed by {goal.email}
-                            </div>
-                        </li>
-                    )
-                }
-            </ul>);
+        return (completedGoals.length > 0) ? (
+            <div style={{textAlign: 'center'}}>
+                <h4 className="clear">
+                    Completed Goals
+                    <button
+                        className="btn btn-sm btn-danger pull-right"
+                        style={{marginLeft: '10px'}}
+                        onClick={() => this.clearCompleted()}
+                    >
+                        Clear all
+                    </button>
+                </h4>
+                <ul className="list-group">
+                    {
+                        completedGoals.map((goal, id) =>
+                            <li key={id} className="list-group-item clearfix">
+                                <span className="list-item">{goal.title}</span>
+                                <div className="list-item text-muted small">
+                                    completed by {goal.email}
+                                </div>
+                            </li>
+                        )
+                    }
+                </ul>
+            </div>) : null;
     }
 }
 
