@@ -8,47 +8,30 @@ import CompletetedGoalList from './CompletetedGoalList';
 
 class App extends Component {
 
-    signOut() {
-        firebaseApp.auth().signOut();
-    }
+  signOut() {
+    firebaseApp.auth().signOut();
+  }
 
-    render () {
-        return (
-            <div
-                className="App"
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    minHeight: '100vh',
-                    width: '50vw',
-                    margin: '0 auto',
-                    position: 'relative'
-                }}
-            >
-                <h3>Goal Coach</h3>
-                <AddGoal />
-                <h4>Goals</h4>
-                <GoalList />
-                <hr />
-                <CompletetedGoalList />
-
-                <button
-                    className="btn btn-danger"
-                    onClick={() => this.signOut()}
-                    style={{position: 'fixed', top: '5px', right: '5px'}}
-                >
-                    Sign out
-                </button>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="App" style={ { display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', width: '50vw', margin: '0 auto', position: 'relative' } }>
+        <h3>Goal Coach</h3>
+        <AddGoal />
+        <h4>Goals</h4>
+        <GoalList />
+        <hr />
+        <CompletetedGoalList />
+        <button className="btn btn-danger" onClick={ () => this.signOut() } style={ { position: 'fixed', top: '5px', right: '50px' } }>
+          Sign out
+        </button>
+      </div>
+      );
+  }
 }
 
 function mapStateToProps(state) {
-    console.log('App mapStateToProps state = ', state);
-    return {};
+  console.log('App mapStateToProps state = ', state);
+  return {};
 }
 
 export default connect(mapStateToProps, null)(App);
